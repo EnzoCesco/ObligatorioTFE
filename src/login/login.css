@@ -1,0 +1,44 @@
+
+
+
+div.login, h4{
+
+
+    width: 50vw;
+    padding: 2vw;
+    justify-content: center;
+    text-align: left;
+
+    
+
+}
+
+div.login{
+
+
+    width: 50vw;
+    height: 10vh;
+
+    padding: 2vw;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    border : solid 1px black;
+    border-radius: 25px;
+    
+   
+    
+
+}
+
+
+
+input.login{
+
+    margin: 1vw;    
+
+}
+
+
