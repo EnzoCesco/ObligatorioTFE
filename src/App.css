@@ -37,16 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-.loginScreen{
-
-  background-color: #8ca7dd;
-  height: 100vh;
-  width: 100vw;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-
-}

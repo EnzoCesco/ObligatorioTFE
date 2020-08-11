@@ -43,8 +43,6 @@ export class Login extends React.Component {
                 else{
                     this.props.loginResult({
                         responseCode : result["codigo"], 
-                        rApiKey: result["apiKey"],
-                        rId : result["id"],
                         rMessage : result["mensaje"]})
                 }
             })
@@ -53,23 +51,27 @@ export class Login extends React.Component {
     render(){
         return( 
                 <>
-                <div className="login">
+                <div className = "loginContainer">
+                    <div className="login">
 
-                    <label htmlFor="user" className="login">
-                        USUARIO :
-                        <input type="text" id="user" className="login" onChange={this.handleUserChange}></input>
-                    </label>
-                    
-                    <label htmlFor="password" className="login">
-                        CONTRASEÑA :
-                        <input type = "password" id="password" className="login" onChange={this.handlePasswordChange} ></input>
-                    </label>
+                        <label htmlFor="user" className="login">
+                            USUARIO :
+                            <input type="text" id="user" className="login" onChange={this.handleUserChange}></input>
+                        </label>
+                        
+                        <label htmlFor="password" className="login">
+                            CONTRASEÑA :
+                            <input type = "password" id="password" className="login" onChange={this.handlePasswordChange} ></input>
+                        </label>
 
-                    <input type="button"  value="INGRESAR" onClick={this.validateLogin}></input>
-                
-                    
+                        <input type="button"  value="INGRESAR" className="login" onClick={this.validateLogin}></input>
+
+                        
+                    </div>
+                    <div>
+                        <h4>{this.props.loginErrorMessage}</h4>
+                    </div>
                 </div>
-                <h4>{this.props.loginErrorMessage}</h4>
                 </>
         )
     }
@@ -77,16 +79,14 @@ export class Login extends React.Component {
 
 }
 
-const  mapStateToProps = (state) => {
-    return{
-        loginErrorMessage : state.loginErrorMessage
-    };
-}
+const mapStateToProps = (state) => ({
+        loginErrorMessage : state.message
+})
 
 const mapDispatchToProps = (dispatch) => {
     return{
         loginResult: (result) => dispatch({type: "LOGIN", message: result})
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

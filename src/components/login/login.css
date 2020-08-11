@@ -1,0 +1,53 @@
+
+
+
+div.loginContainer{
+
+    position: fixed;
+    top: 25%;
+    left: 25%;
+
+    padding: 2vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    
+
+}
+
+div.login{
+
+    width: 50vw;
+    height: 8vh;
+
+    padding: 3vw;
+
+    margin: auto;
+    border : solid 1px black;
+    border-radius: 25px;
+
+}
+
+input.login{
+
+    margin: 1vw;    
+
+}
+
+input.login[type="button"]{
+
+    width: 25vw;
+
+    background-color : #181E8E;
+    color: white;
+    border-radius: 5px;
+    
+}
+
+
+
+
+
