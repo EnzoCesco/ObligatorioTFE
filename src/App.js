@@ -1,49 +1,40 @@
 import React from 'react';
 import './App.css';
 import Login from './components/login/login.js'
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { initialState } from './initialState.js';
+import Menu from './components/menu/menu.js'
+import Register from './components/register/register.js'
+import { connect } from 'react-redux';
 
+export class App extends React.Component {
 
-/* ---- REDUCERS ---- */ 
-
-function reducer(state = initialState, action){
-  switch(action.type){
-    case "LOGIN":
-      let {responseCode, rApiKey, rId, rMessage} = action.message;
-      if(responseCode === 200){
-        return( { ...state, loginStatus: "loged", apiKey: rApiKey, id: rId, message : rMessage } );
-      }
-      else{
-        console.log(action.message);
-        return( { ...state, loginStatus: "guest", apiKey: "", id: "", message : rMessage });
-      }
-
-    default:
-      return state;
-
-  }
-}
-
-/* ---- CREATE STORE ---- */ 
-
-const store = createStore(reducer);
-
-/* ---- APP ---- */ 
-
-class App extends React.Component {
-
+  
+  
   render(){
 
+      console.log(this.props.userState);
+
       return (
-        <Provider store={store}>
-              <Login></Login>
-        </Provider>
+        <>
+
+          { this.props.userState === "guest" ? <Login></Login> : <></>} 
+
+          { this.props.userState === "register" ? <Register></Register> : <></>} 
+
+          { this.props.userState === "loged" ? <Menu></Menu> : <></>}
+         
+          
+        </>
       );
 
   }
 
 }
 
-export default App;
+let mapStateToProps = state => ({
+  userState : state.loginManager.loginStatus
+});
+
+
+export default connect(mapStateToProps)(App);
+
+

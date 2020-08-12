@@ -1,5 +1,5 @@
 
-export const initialState = initialize => ({
+export const initialState = ({
 
     loginStatus : "guest",
     apiKey : "",

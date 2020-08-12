@@ -1,8 +1,8 @@
 import React from 'react';
-import './login.css';
+import './register.css';
 import { connect } from 'react-redux';
 
-export class Login extends React.Component {
+export class Register extends React.Component {
 
     constructor(){
         super();
@@ -20,22 +20,25 @@ export class Login extends React.Component {
         this.setState( { password: e.target.value } );
     };
 
-    validateLogin = () => {
+    registerUser = () => {
 
         let auth = { usuario : this.state.user , password : this.state.password };
 
-        fetch ("http://xpense.develotion.com/login.php",{
+        fetch ("http://xpense.develotion.com/usuarios.php",{
             method: "POST",
             body: JSON.stringify(auth),
             headers:{'Content-Type': 'application/json'}
         })
             .then(res => res.json())
             .then((result) => {
+                console.log(result)
                 if(result["codigo"] === 200){
                     this.props.loginResult({
                         responseCode : result["codigo"], 
                         rApiKey: result["apiKey"],
-                        rId : result["id"]})
+                        rId : result["id"],
+                        rMessage : "REGISTRO EXITOSO"
+                    })
                 }
                 else{
                     this.props.loginResult({
@@ -52,24 +55,22 @@ export class Login extends React.Component {
     render(){
         return( 
                 <>
-                <div className = "loginContainer">
-                    <div className="login">
+                <div className = "registerContainer">
+                    <h3>NUEVO USUARIO</h3>
+                    <div className="register">
 
-                        <label htmlFor="user" className="login">
+                        <label htmlFor="user" className="register">
                             USUARIO :
-                            <input type="text" id="user" className="login" onChange={this.handleUserChange}></input>
+                            <input type="text" id="user" className="register" onChange={this.handleUserChange}></input>
                         </label>
                         
                         <label htmlFor="password" className="login">
                             CONTRASEÑA :
-                            <input type = "password" id="password" className="login" onChange={this.handlePasswordChange} ></input>
+                            <input type = "password" id="password" className="register" onChange={this.handlePasswordChange} ></input>
                         </label>
 
-                        <input type="button"  value="INGRESAR" className="login" onClick={this.validateLogin}></input>
+                        <input type="button"  value="Registrar Usuario" className="register" onClick={this.registerUser}></input>
 
-                        <input type="button"  value="REGISTRARSE" className="login" onClick={this.showRegister}></input>
-
-                        
                     </div>
                     <div>
                         <h4>{this.props.loginErrorMessage}</h4>
@@ -85,14 +86,13 @@ export class Login extends React.Component {
 
 
 let mapStateToProps = state => ({
-    loginErrorMessage : state.loginManager.message
+    registerErrorMessage : state.loginManager.message
 });
 
 const mapDispatchToProps = dispatch => {
     return{
-        loginResult: (result) => dispatch({type: "LOGIN", message: result}),
-        changeToRegister: () => dispatch({type: "OPEN_REGISTRATION"})
+        loginResult: (result) => dispatch({type: "REGISTER", message: result}),
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
