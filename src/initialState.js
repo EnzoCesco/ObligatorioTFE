@@ -5,6 +5,7 @@ export const initialState = ({
     apiKey : "",
     id : "",
     message : "",
-    taskList: []
+    expensesGroupList : [{id:-1, nombre: 'Cargando...'}],
+    selectedComponent : 0
     
   });

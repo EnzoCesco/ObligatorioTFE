@@ -1,33 +1,25 @@
 import React from 'react';
-import './App.css';
-import Login from './components/login/login.js'
-import Menu from './components/menu/menu.js'
-import Register from './components/register/register.js'
+import Login from './components/login.js';
+import Register from './components/register.js';
+import Main from './components/main/main.js';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export class App extends React.Component {
 
-  
-  
   render(){
 
-      console.log(this.props.userState);
-
       return (
-        <>
-
-          { this.props.userState === "guest" ? <Login></Login> : <></>} 
-
-          { this.props.userState === "register" ? <Register></Register> : <></>} 
-
-          { this.props.userState === "loged" ? <Menu></Menu> : <></>}
-         
-          
-        </>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Login}/>
+              <Route exact path="/register" component={Register}/>
+              <Route exact path="/main" component={Main}/>
+            </Switch>
+          </Router>
       );
 
   }
-
 }
 
 let mapStateToProps = state => ({
