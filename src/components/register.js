@@ -178,7 +178,7 @@ let mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return{
-        loginResult: (result) => dispatch({type: "REGISTER", message: result}),
+        loginResult: (result) => dispatch({type: "REGISTER", message: result}) 
     };
 }
 

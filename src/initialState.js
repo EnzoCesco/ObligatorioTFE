@@ -5,7 +5,9 @@ export const initialState = ({
     apiKey : "",
     id : "",
     message : "",
+    expensesMessage : "",
     expensesGroupList : [{id:-1, nombre: 'Cargando...'}],
-    selectedComponent : 0
+    expensesList : [{id:-1, nombre: 'Cargando...'}],
+    lastUpdate: new Date().getTime()
     
   });

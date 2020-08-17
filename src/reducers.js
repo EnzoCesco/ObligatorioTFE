@@ -30,14 +30,11 @@ function loginManager(state = initialState, action){
       return( { ...state, loginStatus: "register"});
 
     case "REGISTER":
-      let resMessage = action.message.rMessage;
-      let resCode = action.message.responseCode;
-
-      if(resCode === 200){
+      if(action.message.responseCode=== 200){
         return( { ...state, loginStatus: "guest", message : "Registro Exitoso" } );
       }
       else{
-        return( { ...state, loginStatus: "register", apiKey: "", id: "", message : resMessage } );
+        return( { ...state, loginStatus: "register", apiKey: "", id: "", message : action.message.rMessage } );
       }
 
     default:
@@ -64,8 +61,19 @@ function expensesManager(state = initialState, action){
   switch(action.type){
 
     case "EXPENSES_GROUPS_LOAD":
-
       return ( { ...state, expensesGroupList: action.payload});
+
+    case "EXPENSE_CREATE":
+      return ( { ...state, expensesMessage: action.payload.message, lastUpdate: action.payload.lastUpdate})
+
+    case "EXPENSE_CREATE_ERROR":
+      return ( { ...state, expensesMessage: action.payload.message, lastUpdate: action.payload.lastUpdate})
+ 
+    case "EXPENSES_LOAD":
+      return ( { ...state, expensesList: action.payload});
+
+    case "EXPENSE_DELETE":
+      return ( {  ...state, expensesMessage: action.payload.message, lastUpdate: action.payload.lastUpdate});
 
     default:
       return state;
@@ -73,5 +81,7 @@ function expensesManager(state = initialState, action){
   }
 
 }
+
+
 
 export default appReducers
