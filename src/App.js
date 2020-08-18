@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from './components/login.js';
-import Register from './components/register.js';
+import Login from './components/Login.js';
+import Register from './components/Register.js';
 import Main from './components/Main.js'
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

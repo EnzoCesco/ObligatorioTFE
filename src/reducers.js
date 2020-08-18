@@ -17,13 +17,16 @@ function loginManager(state = initialState, action){
 
       let {responseCode, rApiKey, rId, rMessage } = action.message;
 
-
       if(responseCode === 200){
         return( { ...state, loginStatus: "loged", apiKey: rApiKey, id: rId, message : rMessage } );
       }
       else{
         return( { ...state, loginStatus: "guest", apiKey: "", id: "", message : rMessage });
       }
+    
+    case "LOGOUT":
+
+      return ( initialState );
 
     case "OPEN_REGISTRATION" :
 

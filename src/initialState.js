@@ -7,7 +7,7 @@ export const initialState = ({
     message : "",
     expensesMessage : "",
     expensesGroupList : [{id:-1, nombre: 'Cargando...'}],
-    expensesList : [{id:-1, nombre: 'Cargando...'}],
+    expensesList : [],
     lastUpdate: new Date().getTime()
     
   });

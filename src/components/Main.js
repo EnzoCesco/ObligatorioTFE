@@ -87,7 +87,6 @@ export class Main extends Component {
 
 let mapStateToProps = state => ({
     loginState : state.loginManager.loginStatus,
-    selectedComponent : state.menuManager.selectedComponent,
     apiKey : state.loginManager.apiKey,
     userId : state.loginManager.id,
     lastUpdate : state.expensesManager.lastUpdate

@@ -6,15 +6,38 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { appReducers } from './reducers.js'
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 /* ---- CREATE STORE ---- */ 
 
 const store = createStore(appReducers);
 
+/* ---- CREATE THEME ---- */ 
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+
 const rootElement = document.getElementById('root')
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>,
   rootElement
 )
