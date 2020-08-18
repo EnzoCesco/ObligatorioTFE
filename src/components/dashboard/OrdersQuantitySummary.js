@@ -26,7 +26,6 @@ export default function OrdersQuantitySummary() {
   const expensesGroupList = useSelector((state) =>  state.expensesManager.expensesGroupList);
   let expensesList = useSelector((state) =>  state.expensesManager.expensesList);
 
-
   const renderTableData = () => {
 
     expensesGroupList.forEach(id => {

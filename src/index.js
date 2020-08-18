@@ -32,7 +32,11 @@ const theme = createMuiTheme({
   },
 });
 
+
+
 const rootElement = document.getElementById('root')
+document.title = "Gestion de Gastos";
+
   ReactDOM.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
